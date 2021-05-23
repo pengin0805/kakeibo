@@ -1,7 +1,7 @@
 class FixedCost < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :fixed_category_id
-  belongs_to :fixed_id
+  belongs_to :fixed_category
+  belongs_to :fixed
 
   with_options presence: true do
     validates :price
