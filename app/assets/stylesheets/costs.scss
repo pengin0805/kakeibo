@@ -1,3 +1,17 @@
-// Place all the styles related to the costs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.main {
+  padding: 50px;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.month {
+  display: flex;
+  height: 25px;
+}
+.form_child {
+  margin: 0 10px;
+}
+.btn {
+  height: 50px;
+}

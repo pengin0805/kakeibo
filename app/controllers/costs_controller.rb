@@ -5,12 +5,16 @@ class CostsController < ApplicationController
   
   def create
     @fixed_cost = FixedCost.new(fixed_cost_params)
-    @fixed_cost.save
+    if @fixed_cost.save
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 
   private
 
   def fixed_cost_params
-    params.permit(:fixed_category_id, :fixed_id, :price, :month)
+    params.require(:fixed_cost).permit(:fixed_category_id, :fixed_id, :price, :month)
   end
 end

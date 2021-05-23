@@ -1,24 +1,50 @@
-<%= form_with url:costs_path, local: true do |f| %>
-  <div class="fixed_category_id">
-    カテゴリー
-  </div>
-  <%= f.collection_select(:fixed_category_id,FixedCategory.all, :id, :name, {}) %>
-  <%= f.collection_select(:fixed_id,Fixed.all, :id, :name, {}) %>
-  <%= f.text_field :price %>
-  <%= raw sprintf(
-                  f.date_select(
-                    :month,
-                    discard_day:true,
-                    class:'select-month',
-                    id:"month",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: Time.now.year,
-                    date_separator: '%s'),
-                  "<p> 年 </p>") + "<p> 月 </p>" %>
+<div class="main">
+  <%= form_with model: @fixed_cost, url:costs_path, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
 
-  <%= f.submit "書き込み" ,class:"register-red-btn" %>
-<% end %>
+    <div class="form">
+      <div class="form_child">
+        <div class="fixed_category_id">
+          カテゴリー
+        </div>
+        <%= f.collection_select(:fixed_category_id,FixedCategory.all, :id, :name, {}) %>
+      </div>
+      <div class="form_child">
+        <div class="fixed_id">
+          項目
+        </div>
+        <%= f.collection_select(:fixed_id,Fixed.all, :id, :name, {}) %>
+      </div>
+      <div class="form_child">
+        <div class="price">
+          金額
+        </div>
+        <%= f.text_field :price %>円
+      </div>
+      <div class="form_child">
+        <div class="price">
+          日付
+        </div>
+        <div class="month">
+          <%= raw sprintf(
+          f.date_select(
+            :month,
+            discard_day:true,
+            class:'select-month',
+            id:"month",
+            use_month_numbers: true,
+            prompt:'--',
+            start_year: Time.now.year,
+            date_separator: '%s'),
+          " 年 ") + "月 " %>
+        </div>
+      </div>
+      <div class="form_child">
+          <%= f.submit "書き込み" ,class:"btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 
 
