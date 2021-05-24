@@ -1,14 +1,14 @@
 class FixedsController < ApplicationController
   def index
     @fixed_cost = FixedCost.new
-    @fixed_costs = FixedCost.all
+    @fixed_costs = FixedCost.where('extract(year from month) = ? AND extract(month from month) = ?', Time.now.year, Time.now.month)
     @variable_cost = VariableCost.new
-    @variable_costs = VariableCost.all
+    @variable_costs = VariableCost.where('extract(year from start_time) = ? AND extract(month from start_time) = ?', Time.now.year, Time.now.month)
   end
   
   def create
-    @fixed_costs = FixedCost.all
-    @variable_costs = VariableCost.all
+    @fixed_costs = FixedCost.where('extract(year from month) = ? AND extract(month from month) = ?', Time.now.year, Time.now.month)
+    @variable_costs = VariableCost.where('extract(year from start_time) = ? AND extract(month from start_time) = ?', Time.now.year, Time.now.month)
     @fixed_cost = FixedCost.new(fixed_cost_params)
     @variable_cost = VariableCost.new
     if @fixed_cost.save
