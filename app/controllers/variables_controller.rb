@@ -7,7 +7,7 @@ class VariablesController < ApplicationController
     if @variable_cost.save
       redirect_to root_path
     else
-      render template: "costs/index"
+      render template: "fixeds/index"
     end
   end
 

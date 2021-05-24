@@ -1,4 +1,4 @@
-class CostsController < ApplicationController
+class FixedsController < ApplicationController
   def index
     @fixed_cost = FixedCost.new
     @fixed_costs = FixedCost.all
