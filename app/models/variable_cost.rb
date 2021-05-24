@@ -5,7 +5,7 @@ class VariableCost < ApplicationRecord
   with_options presence: true do
     validates :variable_name
     validates :price
-    validates :date
+    validates :start_time
   end
   with_options numericality: { other_than: 1 } do
     validates :variable_category_id
