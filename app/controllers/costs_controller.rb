@@ -1,9 +1,11 @@
 class CostsController < ApplicationController
   def index
     @fixed_cost = FixedCost.new
+    @fixed_costs = FixedCost.all
   end
   
   def create
+    @fixed_costs = FixedCost.all
     @fixed_cost = FixedCost.new(fixed_cost_params)
     if @fixed_cost.save
       redirect_to root_path
