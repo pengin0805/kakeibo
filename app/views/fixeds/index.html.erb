@@ -1,4 +1,16 @@
 <div class="main">
+
+<%= month_calendar events: @variable_costs do |date, variable_costs| %>
+  <%= date.day %>
+
+  <% variable_costs.each do |variable| %>
+    <div>
+      <%= variable.variable_name %>
+      <%= variable.price %>
+    </div>
+  <% end %>
+<% end %>
+
   <h1>変動費</h1>
   <%= form_with model: @variable_cost, url:variables_path, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
@@ -14,7 +26,7 @@
         <div class="fixed_id">
           項目
         </div>
-        <%= f.text_field :variable_name, class:"text" %>円
+        <%= f.text_field :variable_name, class:"text" %>
       </div>
       <div class="form_child">
         <div class="price">
@@ -27,16 +39,7 @@
           日付
         </div>
         <div class="month">
-          <%= raw sprintf(
-          f.date_select(
-            :date,
-            class:'text',
-            id:"month",
-            use_month_numbers: true,
-            prompt:'--',
-            start_year: Time.now.year,
-            date_separator: '%s'),
-            " 年 ", " 月 ") + " 日 " %>
+          <%= f.date_select :start_time %>
         </div>
       </div>
       <div class="form_child">
@@ -46,9 +49,9 @@
   <% end %>
   <div class="lists">
     <table border="1" width="70%" cellpadding="3">
-      <tr><th>日付</th><th>項目</th><th>金額</th></tr>
+      <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @variable_costs.each do |variable| %>
-      <tr><th><%= variable.date %> </th><th><%= variable.variable_name %></th><th><%= variable.price %></th></tr>
+      <tr><th><%= variable.start_time %> </th><th><%= variable.variable_category.name %></th><th><%= variable.variable_name %></th><th><%= variable.price %></th></tr>
       <% end %>
     </table>
   </div>
@@ -80,17 +83,7 @@
           日付
         </div>
         <div class="month">
-          <%= raw sprintf(
-          f.date_select(
-            :month,
-            discard_day:true,
-            class:'text',
-            id:"month",
-            use_month_numbers: true,
-            prompt:'--',
-            start_year: Time.now.year,
-            date_separator: '%s'),
-          " 年 ") + "月 " %>
+          <%= f.date_select :month, discard_day: true %>
         </div>
       </div>
       <div class="form_child">
@@ -100,9 +93,9 @@
   <% end %>
   <div class="lists">
     <table border="1" width="70%" cellpadding="3">
-      <tr><th>日付</th><th>項目</th><th>金額</th></tr>
+      <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @fixed_costs.each do |fixed| %>
-      <tr><th><%= fixed.month %> </th><th><%= fixed.fixed.name %></th><th><%= fixed.price %></th></tr>
+      <tr><th><%= fixed.month %> </th><th><%= fixed.fixed_category.name %></th><th><%= fixed.fixed.name %></th><th><%= fixed.price %></th></tr>
       <% end %>
     </table>
   </div>

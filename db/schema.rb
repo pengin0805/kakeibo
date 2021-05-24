@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_130012) do
     t.integer "variable_category_id", null: false
     t.string "variable_name", null: false
     t.integer "price", null: false
-    t.date "date", null: false
+    t.date "start_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,7 +1,7 @@
 class VariablesController < ApplicationController
   def create
-    @variable_costs = VariableCost.all
-    @fixed_costs = FixedCost.all
+    @variable_costs = VariableCost.where('extract(year from start_time) = ? AND extract(month from start_time) = ?', Time.now.year, Time.now.month)
+    @fixed_costs = FixedCost.where('extract(year from month) = ? AND extract(month from month) = ?', Time.now.year, Time.now.month)
     @variable_cost = VariableCost.new(variable_cost_params)
     @fixed_cost = FixedCost.new
     if @variable_cost.save
@@ -14,7 +14,7 @@ class VariablesController < ApplicationController
   private
 
   def variable_cost_params
-    params.require(:variable_cost).permit(:variable_category_id, :variable_name, :price, :date)
+    params.require(:variable_cost).permit(:variable_category_id, :variable_name, :price, :start_time)
   end
 
 end
