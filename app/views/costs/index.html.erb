@@ -1,4 +1,57 @@
 <div class="main">
+  <h1>変動費</h1>
+  <%= form_with model: @variable_cost, url:variables_path, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+
+    <div class="form">
+      <div class="form_child">
+        <div class="fixed_category_id">
+          カテゴリー
+        </div>
+        <%= f.collection_select(:variable_category_id,VariableCategory.all, :id, :name, {},{class:"text"}) %>
+      </div>
+      <div class="form_child">
+        <div class="fixed_id">
+          項目
+        </div>
+        <%= f.text_field :variable_name, class:"text" %>円
+      </div>
+      <div class="form_child">
+        <div class="price">
+          金額
+        </div>
+        <%= f.text_field :price, class:"text" %>円
+      </div>
+      <div class="form_child">
+        <div class="price">
+          日付
+        </div>
+        <div class="month">
+          <%= raw sprintf(
+          f.date_select(
+            :date,
+            class:'text',
+            id:"month",
+            use_month_numbers: true,
+            prompt:'--',
+            start_year: Time.now.year,
+            date_separator: '%s'),
+            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+        </div>
+      </div>
+      <div class="form_child">
+          <%= f.submit "書き込み" ,class:"btn" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="lists">
+    <table border="1" width="70%" cellpadding="3">
+      <tr><th>日付</th><th>項目</th><th>金額</th></tr>
+      <% @variable_costs.each do |variable| %>
+      <tr><th><%= variable.date %> </th><th><%= variable.variable_name %></th><th><%= variable.price %></th></tr>
+      <% end %>
+    </table>
+  </div>
   <h1>固定費</h1>
   <%= form_with model: @fixed_cost, url:costs_path, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>

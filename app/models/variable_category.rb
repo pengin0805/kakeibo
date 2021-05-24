@@ -1,4 +1,4 @@
-class VariableCategoryId < ActiveHash::Base
+class VariableCategory < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '食費' },
