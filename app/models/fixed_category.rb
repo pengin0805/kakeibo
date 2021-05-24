@@ -1,4 +1,4 @@
-class FixedCategoryId < ActiveHash::Base
+class FixedCategory < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '住宅費' },

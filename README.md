@@ -1,6 +1,6 @@
 # テーブル設計
 
-## filed_cost テーブル
+## fixed_cost テーブル
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | fixed_category_id  | integer| null: false |

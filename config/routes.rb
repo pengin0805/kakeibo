@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'costs#index'
-  resources :costs, only: [:create]
+  root to: 'fixeds#index'
+  resources :fixeds, only: [:create]
+  resources :variables, only: [:create]
+
 end

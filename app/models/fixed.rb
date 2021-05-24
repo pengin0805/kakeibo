@@ -1,4 +1,4 @@
-class FixedId < ActiveHash::Base
+class Fixed < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '電気' },
