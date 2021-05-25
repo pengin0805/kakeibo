@@ -1,21 +1,24 @@
 <div class="main">
 
-<%= month_calendar events: @variable_costs_all do |date, variable_costs| %>
-  <span class="<%= date%>"><%= date.day %></span>
+  <% unless @variable_cost.errors.any? || @fixed_cost.errors.any?%>
+  <%= month_calendar events: @variable_costs_all do |date, variable_costs| %>
+    <span class="<%= date%>"><%= date.day %></span>
 
-  <% variable_costs.each do |variable| %>
-    <div>
-      <%= variable.variable_name %>
-      <%= variable.price %>
-    </div>
+    <% variable_costs.each do |variable| %>
+      <div>
+        <%= variable.variable_name %>
+        ¥<%= variable.price %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-    <%= @week1_sum %>
-    <%= @week2_sum %>
-    <%= @week3_sum %>
-    <%= @week4_sum %>
-    <%= @week5_sum %>
-    <%= @week6_sum %>
+  <% end %>
+
+  
+  <h1>各週の合計金額</h1>
+  <table border="1" width="70%" cellpadding="3" class="week_sum">
+    <tr><th>1週目</th><th>2週目</th><th>3週目</th><th>4週目</th><th>5週目</th><th>6週目</th></tr>
+    <tr><td>¥<%= @week1_sum %></td><td>¥<%= @week2_sum %></td><td>¥<%= @week3_sum %></td><td>¥<%= @week4_sum %></td><td>¥<%= @week5_sum %></td><td>¥<%= @week6_sum %></td></tr>
+  </table>
 
   <h1>変動費</h1>
   <%= form_with model: @variable_cost, url:variables_path, local: true do |f| %>
@@ -57,7 +60,7 @@
     <table border="1" width="70%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @variable_costs.each do |variable| %>
-      <tr><th><%= variable.start_time %> </th><th><%= variable.variable_category.name %></th><th><%= variable.variable_name %></th><th><%= variable.price %></th></tr>
+      <tr><td><%= variable.start_time %> </td><td><%= variable.variable_category.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
       <% end %>
     </table>
   </div>
@@ -101,7 +104,7 @@
     <table border="1" width="70%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @fixed_costs.each do |fixed| %>
-      <tr><th><%= fixed.month %> </th><th><%= fixed.fixed_category.name %></th><th><%= fixed.fixed.name %></th><th><%= fixed.price %></th></tr>
+      <tr><td><%= fixed.month %> </td><td><%= fixed.fixed_category.name %></td><td><%= fixed.fixed.name %></td><td><%= fixed.price %></td></tr>
       <% end %>
     </table>
   </div>
