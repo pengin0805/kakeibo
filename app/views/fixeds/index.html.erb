@@ -1,5 +1,5 @@
 <div class="main">
-
+  <h1>カレンダー：<%= Date.today.month%>月</h1>
   <% unless @variable_cost.errors.any? || @fixed_cost.errors.any?%>
   <%= month_calendar events: @variable_costs_all do |date, variable_costs| %>
     <span class="<%= date%>"><%= date.day %></span>
