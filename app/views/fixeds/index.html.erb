@@ -1,7 +1,7 @@
 <div class="main">
 
-<%= month_calendar events: @variable_costs do |date, variable_costs| %>
-  <%= date.day %>
+<%= month_calendar events: @variable_costs_all do |date, variable_costs| %>
+  <span class="<%= date%>"><%= date.day %></span>
 
   <% variable_costs.each do |variable| %>
     <div>
@@ -10,6 +10,12 @@
     </div>
   <% end %>
 <% end %>
+    <%= @week1_sum %>
+    <%= @week2_sum %>
+    <%= @week3_sum %>
+    <%= @week4_sum %>
+    <%= @week5_sum %>
+    <%= @week6_sum %>
 
   <h1>変動費</h1>
   <%= form_with model: @variable_cost, url:variables_path, local: true do |f| %>
