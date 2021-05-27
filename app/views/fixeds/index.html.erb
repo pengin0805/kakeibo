@@ -1,5 +1,5 @@
 <div class="main">
-  <h1>カレンダー：<%= Date.today.month%>月</h1>
+  <h1>＜<%= Date.today.month%>月＞</h1>
   <% unless @variable_cost.errors.any? || @fixed_cost.errors.any?%>
   <%= month_calendar events: @variable_costs_all do |date, variable_costs| %>
     <span class="<%= date%>"><%= date.day %></span>
@@ -12,15 +12,18 @@
     <% end %>
   <% end %>
   <% end %>
-
-  
-  <h1>各週の合計金額</h1>
-  <table border="1" width="70%" cellpadding="3" class="week_sum">
-    <tr><th>1週目</th><th>2週目</th><th>3週目</th><th>4週目</th><th>5週目</th><th>6週目</th></tr>
+  <h2>今月の合計</h2>
+  <table border="1" width="20%" cellpadding="3" class="week_sum">
+    <tr><th><%= Date.today.month%>月</th></tr>
+    <tr><td>¥<%= @week_sum %></td></tr>
+  </table>
+  <h2>各週の合計</h2>
+  <table border="1" cellpadding="3" class="week_sum">
+    <tr><th width="10%">第1週</th><th width="10%">第2週</th><th width="10%">第3週</th><th width="10%">第4週</th><th width="10%">第5週</th><th width="10%">第6週</th></tr>
     <tr><td>¥<%= @week1_sum %></td><td>¥<%= @week2_sum %></td><td>¥<%= @week3_sum %></td><td>¥<%= @week4_sum %></td><td>¥<%= @week5_sum %></td><td>¥<%= @week6_sum %></td></tr>
   </table>
 
-  <h1>変動費</h1>
+  <h2>変動費</h2>
   <%= form_with model: @variable_cost, url:variables_path, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 
@@ -64,7 +67,7 @@
       <% end %>
     </table>
   </div>
-  <h1>固定費</h1>
+  <h2>固定費</h2>
   <%= form_with model: @fixed_cost, url:fixeds_path, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 

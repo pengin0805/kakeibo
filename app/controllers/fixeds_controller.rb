@@ -14,7 +14,7 @@ class FixedsController < ApplicationController
     @week4_sum = VariableCost.where(start_time:beginning_of_week+21...beginning_of_week+28).sum(:price)
     @week5_sum = VariableCost.where(start_time:beginning_of_week+28...beginning_of_week+35).sum(:price)
     @week6_sum = VariableCost.where(start_time:beginning_of_week+35...beginning_of_week+42).sum(:price)
-
+    @week_sum = VariableCost.where(start_time:today.beginning_of_month...today.end_of_month).sum(:price)
   end
   
   def create
