@@ -16,18 +16,18 @@
     <% end %>
   <% end %>
   <% end %>
-  <h2>今月の合計</h2>
+  <h2>＜今月の合計＞</h2>
   <table border="1" width="20%" cellpadding="3" class="week_sum">
-    <tr><th><%= Date.today.month%>月</th></tr>
-    <tr><td>¥<%= @week_sum %></td></tr>
+    <tr><th><%= Date.today.month-1%>月</th><th><%= Date.today.month%>月</th></tr>
+    <tr><td>¥<%= @last_month_sum %></td><td>¥<%= @month_sum %></td></tr>
   </table>
-  <h2>各週の合計</h2>
+  <h2>＜各週の合計＞</h2>
   <table border="1" cellpadding="3" class="week_sum">
     <tr><th width="10%">第1週</th><th width="10%">第2週</th><th width="10%">第3週</th><th width="10%">第4週</th><th width="10%">第5週</th><th width="10%">第6週</th></tr>
     <tr><td>¥<%= @week1_sum %></td><td>¥<%= @week2_sum %></td><td>¥<%= @week3_sum %></td><td>¥<%= @week4_sum %></td><td>¥<%= @week5_sum %></td><td>¥<%= @week6_sum %></td></tr>
   </table>
-
-  <h2>変動費</h2>
+  <hr>
+  <h2>＜変動費＞</h2>
   <%= form_with model: @variable_cost, url:variables_path, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 
@@ -70,8 +70,15 @@
       <tr><td><%= variable.start_time %> </td><td><%= variable.variable_category.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
       <% end %>
     </table>
+    <table cellpadding="4">
+      <tr><th>削除</th></tr>
+      <% @variable_costs.each do |variable| %>
+      <tr><td style="border:none"><%= link_to "削除",variable_path(variable.id), method: :delete %></td></tr>
+      <% end %>
+    </table>
   </div>
-  <h2>固定費</h2>
+  <hr>
+  <h2>＜固定費＞</h2>
   <%= form_with model: @fixed_cost, url:fixeds_path, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
 
@@ -112,6 +119,12 @@
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @fixed_costs.each do |fixed| %>
       <tr><td><%= fixed.month %> </td><td><%= fixed.fixed_category.name %></td><td><%= fixed.fixed.name %></td><td><%= fixed.price %></td></tr>
+      <% end %>
+    </table>
+    <table cellpadding="4">
+      <tr><th>削除</th></tr>
+      <% @fixed_costs.each do |fixed| %>
+      <tr><td style="border:none"><%= link_to "削除",fixed_path(fixed.id), method: :delete %></td></tr>
       <% end %>
     </table>
   </div>

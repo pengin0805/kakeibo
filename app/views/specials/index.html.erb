@@ -46,5 +46,11 @@
       <tr><td><%= special.date %> </td><td><%= special.special_category.name %></td><td><%= special.special_name %></td><td><%= special.price %></td></tr>
       <% end %>
     </table>
+    <table cellpadding="4">
+      <tr><th>削除</th></tr>
+      <% @special_costs.each do |special| %>
+      <tr><td style="border:none"><%= link_to "削除",special_path(special.id), method: :delete %></td></tr>
+      <% end %>
+    </table>
   </div>
 </div>
