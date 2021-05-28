@@ -12,6 +12,12 @@ class VariablesController < ApplicationController
     end
   end
 
+  def destroy
+    if VariableCost.find(params[:id]).destroy
+      redirect_to root_path
+    end
+  end
+
   private
 
   def variable_cost_params

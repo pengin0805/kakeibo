@@ -14,6 +14,12 @@ class SpecialsController < ApplicationController
     end
   end
 
+  def destroy
+    if SpecialCost.find(params[:id]).destroy
+      redirect_to action:"index"
+    end
+  end
+
   private
 
   def special_cost_params
