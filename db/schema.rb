@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_130012) do
 
   create_table "special_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "special_category_id", null: false
-    t.string "spacial_name", null: false
+    t.string "special_name", null: false
     t.integer "price", null: false
     t.date "date", null: false
     t.datetime "created_at", precision: 6, null: false

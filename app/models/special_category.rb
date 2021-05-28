@@ -1,4 +1,4 @@
-class SpecialCategoryId < ActiveHash::Base
+class SpecialCategory < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '税金' },

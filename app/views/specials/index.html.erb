@@ -1,0 +1,50 @@
+<div class="header">
+  <%= link_to "ホーム" ,root_path %>
+  <%= link_to "特別費" ,specials_path %>
+</div>
+<div class="main">
+  <h2>特別費</h2>
+  <%= form_with model: @special_cost, url:specials_path, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+
+    <div class="form">
+      <div class="form_child">
+        <div class="fixed_category_id">
+          カテゴリー
+        </div>
+        <%= f.collection_select(:special_category_id,SpecialCategory.all, :id, :name, {},{class:"text"}) %>
+      </div>
+      <div class="form_child">
+        <div class="fixed_id">
+          項目
+        </div>
+        <%= f.text_field :special_name, class:"text" %>
+      </div>
+      <div class="form_child">
+        <div class="price">
+          金額
+        </div>
+        <%= f.text_field :price, class:"text" %>円
+      </div>
+      <div class="form_child">
+        <div class="price">
+          日付
+        </div>
+        <div class="month">
+          <%= f.date_select :date, discard_day: true, discard_month: true %>
+        </div>
+      </div>
+      <div class="form_child">
+          <%= f.submit "書き込み" ,class:"btn" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="lists">
+    <table border="1" width="70%" cellpadding="3">
+      <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
+      <% @special_costs.each do |special| %>
+      <tr><td><%= special.date %> </td><td><%= special.special_category.name %></td><td><%= special.special_name %></td><td><%= special.price %></td></tr>
+      <% end %>
+    </table>
+  </div>
+</div>
