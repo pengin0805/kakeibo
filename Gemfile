@@ -55,6 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'active_hash'
 gem 'pry-rails'
 gem 'simple_calendar', '~> 2.0'
+gem "chartkick"
 
 group :production do
   gem 'unicorn', '5.4.1'
