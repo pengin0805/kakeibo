@@ -77,6 +77,10 @@
       <% end %>
     </table>
   </div>
+  
+  <%= pie_chart @variable_costs.group(:variable_category_id).sum(:price), donut: true, suffix: "%" %>
+  <%= column_chart  @variable_costs.group(:variable_category_id).sum(:price) %>
+
   <hr>
   <h2>＜固定費＞</h2>
   <%= form_with model: @fixed_cost, url:fixeds_path, local: true do |f| %>
