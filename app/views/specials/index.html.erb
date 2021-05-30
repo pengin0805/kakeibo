@@ -53,4 +53,6 @@
       <% end %>
     </table>
   </div>
+  <%= pie_chart SpecialCost.group(:special_name).sum(:price), donut: true, suffix: "%" %>
+  <%= column_chart  SpecialCost.group(:special_name).sum(:price) %>
 </div>
