@@ -133,8 +133,8 @@
     </table>
   </div>
   <h3>・カテゴリー別</h3>
-  <%= pie_chart @fixed_ratio, donut: true, suffix: "%" %>
-  <%= column_chart  @fixed_costs.joins(:fixecate).group("fixecates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "%" %>
+  <%= pie_chart @fixed_ratio, donut: true, suffix: "%",colors: [ "#769fcd","#b9d7ea","#d6e6f2","#f7fbfc"], legend: "left"%>
+  <%= column_chart  @fixed_costs.joins(:fixecate).group("fixecates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
   <h3>・内訳</h3>
   <%= pie_chart @fixed_name_ratio, donut: true, suffix: "%" %>
   <%= column_chart  @fixed_costs.joins(:fixecate_name).group("fixecate_names.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
