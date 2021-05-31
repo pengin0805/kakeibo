@@ -36,7 +36,7 @@
         <div class="fixed_category_id">
           カテゴリー
         </div>
-        <%= f.collection_select(:variable_category_id,VariableCategory.all, :id, :name, {},{class:"text"}) %>
+        <%= f.collection_select(:varicate_id,Varicate.all, :id, :name, {},{class:"text"}) %>
       </div>
       <div class="form_child">
         <div class="fixed_id">
@@ -67,7 +67,7 @@
     <table border="1" width="70%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @variable_costs.each do |variable| %>
-      <tr><td><%= variable.start_time %> </td><td><%= variable.variable_category.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
+      <tr><td><%= variable.start_time %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
       <% end %>
     </table>
     <table cellpadding="4">
@@ -78,8 +78,8 @@
     </table>
   </div>
   
-  <%= pie_chart @variable_costs.group(:variable_category_id).sum(:price), donut: true, suffix: "%" %>
-  <%= column_chart  @variable_costs.group(:variable_category_id).sum(:price) %>
+  <%= pie_chart @variable_costs.joins(:varicate).group("varicates.name").sum(:price), donut: true, suffix: "%" %>
+  <%= column_chart  @variable_costs.joins(:varicate).group("varicates.name").sum(:price) %>
 
   <hr>
   <h2>＜固定費＞</h2>

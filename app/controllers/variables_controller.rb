@@ -21,7 +21,7 @@ class VariablesController < ApplicationController
   private
 
   def variable_cost_params
-    params.require(:variable_cost).permit(:variable_category_id, :variable_name, :price, :start_time)
+    params.require(:variable_cost).permit(:varicate_id, :variable_name, :price, :start_time)
   end
 
 end
