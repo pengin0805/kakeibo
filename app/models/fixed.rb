@@ -13,7 +13,4 @@ class Fixed < ActiveHash::Base
     { id: 11, name: 'ネットフリックス' },
   ]
   
-  include ActiveHash::Associations
-  has_many :fixed_costs
-  
   end

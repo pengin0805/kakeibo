@@ -1,6 +1,5 @@
 class SpecialCost < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :special_category
+  belongs_to :specate
 
   with_options presence: true do
     validates :special_name
@@ -8,7 +7,7 @@ class SpecialCost < ApplicationRecord
     validates :date
   end
   with_options numericality: { other_than: 1 } do
-    validates :special_category_id
+    validates :specate_id
   end
-
+  
 end

@@ -6,7 +6,4 @@ class SpecialCategory < ActiveHash::Base
     { id: 4, name: 'その他、娯楽' },
   ]
 
-include ActiveHash::Associations
-has_many :special_costs
-
 end

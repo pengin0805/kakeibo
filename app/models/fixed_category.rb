@@ -8,7 +8,5 @@ class FixedCategory < ActiveHash::Base
     { id: 6, name: 'その他,娯楽' },
   ]
 
-include ActiveHash::Associations
-has_many :fixed_costs
 
 end
