@@ -53,4 +53,10 @@
       <% end %>
     </table>
   </div>
+  <h3>・カテゴリー別</h3>
+  <%# @ratio.each do |k,v| %>
+    <%# @ratio = (v * 100)/1000 %>
+  <%# end %>
+  <%= pie_chart @ratio, donut: true, suffix: "%" %>
+  <%= column_chart  @special_costs.joins(:specate).group("specates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
 </div>

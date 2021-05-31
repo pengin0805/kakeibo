@@ -16,6 +16,24 @@ class FixedsController < ApplicationController
     @week6_sum = VariableCost.where(start_time:beginning_of_week+35...beginning_of_week+42).sum(:price)
     @month_sum = VariableCost.where(start_time:today.beginning_of_month...today.next_month.beginning_of_month).sum(:price)
     @last_month_sum = VariableCost.where(start_time:today.last_month.beginning_of_month...today.beginning_of_month).sum(:price)
+    @variable_ratio = @variable_costs.joins(:varicate).group("varicates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
+    @variable_ratio.each do |k,v| 
+      ratio = (v * 100).to_f / @variable_costs.sum(:price)
+      @variable_ratio[k] = ratio.round(1)
+    end
+    @fixed_ratio = @fixed_costs.joins(:fixecate).group("fixecates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
+    @fixed_ratio.each do |k,v| 
+      ratio = (v * 100).to_f / @fixed_costs.sum(:price)
+      @fixed_ratio[k] = ratio.round(1)
+    end
+    @fixed_name_ratio = @fixed_costs.joins(:fixecate_name).group("fixecate_names.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
+    @fixed_name_ratio.each do |k,v| 
+      ratio = (v * 100).to_f / @fixed_costs.sum(:price)
+      @fixed_name_ratio[k] = ratio.round(1)
+    end
+
+
+
   end
   
   def create

@@ -77,9 +77,9 @@
       <% end %>
     </table>
   </div>
-  
-  <%= pie_chart @variable_costs.joins(:varicate).group("varicates.name").sum(:price), donut: true, suffix: "%" %>
-  <%= column_chart  @variable_costs.joins(:varicate).group("varicates.name").sum(:price) %>
+  <h3>・カテゴリー別</h3>
+  <%= pie_chart @variable_ratio, donut: true, suffix: "%" %>
+  <%= column_chart  @variable_costs.joins(:varicate).group("varicates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
 
   <hr>
   <h2>＜固定費＞</h2>
@@ -132,6 +132,12 @@
       <% end %>
     </table>
   </div>
+  <h3>・カテゴリー別</h3>
+  <%= pie_chart @fixed_ratio, donut: true, suffix: "%" %>
+  <%= column_chart  @fixed_costs.joins(:fixecate).group("fixecates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "%" %>
+  <h3>・内訳</h3>
+  <%= pie_chart @fixed_name_ratio, donut: true, suffix: "%" %>
+  <%= column_chart  @fixed_costs.joins(:fixecate_name).group("fixecate_names.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
 
 </div>
 
