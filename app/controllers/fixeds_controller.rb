@@ -39,7 +39,7 @@ class FixedsController < ApplicationController
   private
 
   def fixed_cost_params
-    params.require(:fixed_cost).permit(:fixed_category_id, :fixed_id, :price, :month)
+    params.require(:fixed_cost).permit(:fixecate_id, :fixecate_name_id, :price, :month)
   end
 
 

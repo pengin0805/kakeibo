@@ -23,7 +23,7 @@ class SpecialsController < ApplicationController
   private
 
   def special_cost_params
-    params.require(:special_cost).permit(:special_category_id, :special_name, :price, :date)
+    params.require(:special_cost).permit(:specate_id, :special_name, :price, :date)
   end
 
 end

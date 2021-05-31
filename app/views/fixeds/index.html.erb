@@ -91,13 +91,13 @@
         <div class="fixed_category_id">
           カテゴリー
         </div>
-        <%= f.collection_select(:fixed_category_id,FixedCategory.all, :id, :name, {},{class:"text"}) %>
+        <%= f.collection_select(:fixecate_id,Fixecate.all, :id, :name, {},{class:"text"}) %>
       </div>
       <div class="form_child">
         <div class="fixed_id">
           項目
         </div>
-        <%= f.collection_select(:fixed_id,Fixed.all, :id, :name, {},{class:"text"}) %>
+        <%= f.collection_select(:fixecate_name_id,FixecateName.all, :id, :name, {},{class:"text"}) %>
       </div>
       <div class="form_child">
         <div class="price">
@@ -122,7 +122,7 @@
     <table border="1" width="70%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @fixed_costs.each do |fixed| %>
-      <tr><td><%= fixed.month %> </td><td><%= fixed.fixed_category.name %></td><td><%= fixed.fixed.name %></td><td><%= fixed.price %></td></tr>
+      <tr><td><%= fixed.month %> </td><td><%= fixed.fixecate.name %></td><td><%= fixed.fixecate_name.name %></td><td><%= fixed.price %></td></tr>
       <% end %>
     </table>
     <table cellpadding="4">
@@ -132,6 +132,7 @@
       <% end %>
     </table>
   </div>
+
 </div>
 
 
