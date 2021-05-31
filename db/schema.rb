@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_130012) do
+ActiveRecord::Schema.define(version: 2021_05_31_010746) do
 
   create_table "fixed_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "fixed_category_id", null: false
@@ -31,12 +31,20 @@ ActiveRecord::Schema.define(version: 2021_05_22_130012) do
   end
 
   create_table "variable_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "variable_category_id", null: false
+    t.bigint "varicate_id"
     t.string "variable_name", null: false
     t.integer "price", null: false
     t.date "start_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["varicate_id"], name: "index_variable_costs_on_varicate_id"
   end
 
+  create_table "varicates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "variable_costs", "varicates"
 end

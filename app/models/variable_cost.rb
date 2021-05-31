@@ -1,6 +1,5 @@
 class VariableCost < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :variable_category
+  belongs_to :varicate
 
   with_options presence: true do
     validates :variable_name
@@ -8,7 +7,6 @@ class VariableCost < ApplicationRecord
     validates :start_time
   end
   with_options numericality: { other_than: 1 } do
-    validates :variable_category_id
+    validates :varicate_id
   end
-
 end
