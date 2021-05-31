@@ -2,6 +2,11 @@ class SpecialsController < ApplicationController
   def index
     @special_cost = SpecialCost.new
     @special_costs = SpecialCost.where('extract(year from date) = ?', Time.now.year)
+    @ratio = @special_costs.joins(:specate).group("specates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
+    @ratio.each do |k,v| 
+      ratio = (v * 100).to_f / @special_costs.sum(:price)
+      @ratio[k] = ratio.round(1)
+    end
   end
 
   def create
@@ -23,7 +28,7 @@ class SpecialsController < ApplicationController
   private
 
   def special_cost_params
-    params.require(:special_cost).permit(:special_category_id, :special_name, :price, :date)
+    params.require(:special_cost).permit(:specate_id, :special_name, :price, :date)
   end
 
 end

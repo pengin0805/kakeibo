@@ -12,7 +12,7 @@
         <div class="fixed_category_id">
           カテゴリー
         </div>
-        <%= f.collection_select(:special_category_id,SpecialCategory.all, :id, :name, {},{class:"text"}) %>
+        <%= f.collection_select(:specate_id,Specate.all, :id, :name, {},{class:"text"}) %>
       </div>
       <div class="form_child">
         <div class="fixed_id">
@@ -43,7 +43,7 @@
     <table border="1" width="70%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @special_costs.each do |special| %>
-      <tr><td><%= special.date %> </td><td><%= special.special_category.name %></td><td><%= special.special_name %></td><td><%= special.price %></td></tr>
+      <tr><td><%= special.date %> </td><td><%= special.specate.name %></td><td><%= special.special_name %></td><td><%= special.price %></td></tr>
       <% end %>
     </table>
     <table cellpadding="4">
@@ -53,6 +53,10 @@
       <% end %>
     </table>
   </div>
-  <%= pie_chart SpecialCost.group(:special_name).sum(:price), donut: true, suffix: "%" %>
-  <%= column_chart  SpecialCost.group(:special_name).sum(:price) %>
+  <h3>・カテゴリー別</h3>
+  <%# @ratio.each do |k,v| %>
+    <%# @ratio = (v * 100)/1000 %>
+  <%# end %>
+  <%= pie_chart @ratio, donut: true, suffix: "%" %>
+  <%= column_chart  @special_costs.joins(:specate).group("specates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
 </div>

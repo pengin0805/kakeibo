@@ -77,9 +77,9 @@
       <% end %>
     </table>
   </div>
-  
-  <%= pie_chart @variable_costs.joins(:varicate).group("varicates.name").sum(:price), donut: true, suffix: "%" %>
-  <%= column_chart  @variable_costs.joins(:varicate).group("varicates.name").sum(:price) %>
+  <h3>・カテゴリー別</h3>
+  <%= pie_chart @variable_ratio, donut: true, suffix: "%" %>
+  <%= column_chart  @variable_costs.joins(:varicate).group("varicates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
 
   <hr>
   <h2>＜固定費＞</h2>
@@ -91,13 +91,13 @@
         <div class="fixed_category_id">
           カテゴリー
         </div>
-        <%= f.collection_select(:fixed_category_id,FixedCategory.all, :id, :name, {},{class:"text"}) %>
+        <%= f.collection_select(:fixecate_id,Fixecate.all, :id, :name, {},{class:"text"}) %>
       </div>
       <div class="form_child">
         <div class="fixed_id">
           項目
         </div>
-        <%= f.collection_select(:fixed_id,Fixed.all, :id, :name, {},{class:"text"}) %>
+        <%= f.collection_select(:fixecate_name_id,FixecateName.all, :id, :name, {},{class:"text"}) %>
       </div>
       <div class="form_child">
         <div class="price">
@@ -122,7 +122,7 @@
     <table border="1" width="70%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @fixed_costs.each do |fixed| %>
-      <tr><td><%= fixed.month %> </td><td><%= fixed.fixed_category.name %></td><td><%= fixed.fixed.name %></td><td><%= fixed.price %></td></tr>
+      <tr><td><%= fixed.month %> </td><td><%= fixed.fixecate.name %></td><td><%= fixed.fixecate_name.name %></td><td><%= fixed.price %></td></tr>
       <% end %>
     </table>
     <table cellpadding="4">
@@ -132,6 +132,13 @@
       <% end %>
     </table>
   </div>
+  <h3>・カテゴリー別</h3>
+  <%= pie_chart @fixed_ratio, donut: true, suffix: "%" %>
+  <%= column_chart  @fixed_costs.joins(:fixecate).group("fixecates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "%" %>
+  <h3>・内訳</h3>
+  <%= pie_chart @fixed_name_ratio, donut: true, suffix: "%" %>
+  <%= column_chart  @fixed_costs.joins(:fixecate_name).group("fixecate_names.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
+
 </div>
 
 

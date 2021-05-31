@@ -10,19 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_010746) do
+ActiveRecord::Schema.define(version: 2021_05_31_022337) do
+
+  create_table "fixecate_names", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fixecates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "fixed_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "fixed_category_id", null: false
-    t.integer "fixed_id", null: false
+    t.bigint "fixecate_id"
+    t.bigint "fixecate_name_id"
     t.integer "price", null: false
     t.date "month", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fixecate_id"], name: "index_fixed_costs_on_fixecate_id"
+    t.index ["fixecate_name_id"], name: "index_fixed_costs_on_fixecate_name_id"
+  end
+
+  create_table "specates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "special_costs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "special_category_id", null: false
+    t.integer "specate_id", null: false
     t.string "special_name", null: false
     t.integer "price", null: false
     t.date "date", null: false
@@ -46,5 +66,7 @@ ActiveRecord::Schema.define(version: 2021_05_31_010746) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "fixed_costs", "fixecate_names"
+  add_foreign_key "fixed_costs", "fixecates"
   add_foreign_key "variable_costs", "varicates"
 end
