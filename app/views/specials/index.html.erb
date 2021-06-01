@@ -39,19 +39,23 @@
       </div>
     </div>
   <% end %>
+  <div class="container">
+  <% @variable_costs.each_slice(10) do |variable_costs| %>
   <div class="lists">
-    <table border="1" width="70%" cellpadding="3">
+    <table border="1" width="100%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @special_costs.each do |special| %>
       <tr><td><%= special.date %> </td><td><%= special.specate.name %></td><td><%= special.special_name %></td><td><%= special.price %></td></tr>
       <% end %>
     </table>
-    <table cellpadding="4">
+    <table cellpadding="4" width="50px">
       <tr><th>削除</th></tr>
       <% @special_costs.each do |special| %>
       <tr><td style="border:none"><%= link_to "削除",special_path(special.id), method: :delete %></td></tr>
       <% end %>
     </table>
+  </div>
+  <% end %>
   </div>
   <h3>・カテゴリー別</h3>
   <%# @ratio.each do |k,v| %>

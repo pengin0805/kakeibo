@@ -63,19 +63,23 @@
       </div>
     </div>
   <% end %>
+  <div class="container">
+  <% @variable_costs.each_slice(3) do |variable_costs| %>
   <div class="lists">
-    <table border="1" width="70%" cellpadding="3">
+    <table border="1" width="100%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
-      <% @variable_costs.each do |variable| %>
-      <tr><td><%= variable.start_time %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
+      <% variable_costs.each do |variable| %>
+      <tr><td><%= variable.start_time.strftime("%-m月 %d日") %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
       <% end %>
     </table>
-    <table cellpadding="4">
+    <table cellpadding="4" width="50px" >
       <tr><th>削除</th></tr>
-      <% @variable_costs.each do |variable| %>
+      <% variable_costs.each do |variable| %>
       <tr><td style="border:none"><%= link_to "削除",variable_path(variable.id), method: :delete %></td></tr>
       <% end %>
     </table>
+  </div>
+  <% end %>
   </div>
   <h3>・カテゴリー別</h3>
   <%= pie_chart @variable_ratio, donut: true, suffix: "%" %>
@@ -118,19 +122,23 @@
       </div>
     </div>
   <% end %>
+  <div class="container">
+  <% @variable_costs.each_slice(10) do |variable_costs| %>
   <div class="lists">
-    <table border="1" width="70%" cellpadding="3">
+    <table border="1" width="100%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% @fixed_costs.each do |fixed| %>
       <tr><td><%= fixed.month %> </td><td><%= fixed.fixecate.name %></td><td><%= fixed.fixecate_name.name %></td><td><%= fixed.price %></td></tr>
       <% end %>
     </table>
-    <table cellpadding="4">
+    <table cellpadding="4" width="50px">
       <tr><th>削除 </th></tr>
       <% @fixed_costs.each do |fixed| %>
       <tr><td style="border:none"><%= link_to "削除",fixed_path(fixed.id), method: :delete %></td></tr>
       <% end %>
     </table>
+  </div>
+  <% end %>
   </div>
   <h3>・カテゴリー別</h3>
   <%= pie_chart @fixed_ratio, donut: true, suffix: "%",colors: [ "#769fcd","#b9d7ea","#d6e6f2","#f7fbfc"], legend: "left"%>
