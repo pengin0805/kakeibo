@@ -4,8 +4,9 @@ kakeibo-app
 # 概要
 現在、実装中です。<br>
 カレンダー機能を実装した家計簿アプリです。<br>
-変動費、固定費のカテゴリーから選択して、支出を入力するとカレンダーに反映されます。<br>
-カテゴリー別に毎月の合計金額の算出や割合をグラフにしたいと思っています。
+変動費、固定費、特別費の項目から、支出を入力するとカレンダーに反映されます。<br>
+プルダウン方式でカテゴリーを選択できるようにしています。<br>
+カテゴリー別に毎月の合計金額を円グラフ、棒グラフに表示しています。<br>
 
 # 本番環境
 http://18.180.112.172/<br>
@@ -15,35 +16,69 @@ http://18.180.112.172/<br>
 
 # 洗い出した要件定義
 ## ①支出の登録
-[![Image from Gyazo](https://i.gyazo.com/4a8ffb2901831927ad5f63a7b76e9be9.gif)](https://gyazo.com/4a8ffb2901831927ad5f63a7b76e9be9)
+[![Image from Gyazo](https://i.gyazo.com/0b8eb74d50636f91616de01c4d182a17.gif)](https://gyazo.com/0b8eb74d50636f91616de01c4d182a17)
 
 
 # テーブル設計
 
-## fixed_cost テーブル
+## fixed_costs テーブル
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| fixed_category_id  | integer| null: false |
-| fixed_id           | integer| null: false |
+| fixecate_id        | integer| null: false |
+| fixecate_name_id   | integer| null: false |
 | price              | integer| null: false |
 | month              | date   | null: false |
 
 ### Association
+belongs_to :fixecate
+belongs_to :fixecate_name
+
+## fixecates テーブル
+
+| Column               | Type       |Options      |
+| -------------------- | ---------- | ----------- |
+| name                 | string     | null: false |
+
+### Association
+has_many :fixed_costs
+
+## fixecate_names テーブル
+
+| Column               | Type       |Options      |
+| -------------------- | ---------- | ----------- |
+| name                 | string     | null: false |
+
+### Association
+has_many :fixed_costs
 
 
-## variable_cost テーブル
+
+
+## variable_costs テーブル
+
+| Column               | Type       |Options            |
+| -------------------- | ---------- | ----------------- |
+| varicate_id          | references | foreign_key: true |
+| variable_name        | string     | null: false |
+| price                | integer    | null: false |
+| start_time           | date       | null: false |
+
+### Association
+belongs_to :varicate
+
+## varicates テーブル
 
 | Column               | Type       |Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| variable_category_id | integer    | null: false |
-| variable_name        | string     | null: false |
-| price                | integer    | null: false |
-| date                 | date       | null: false |
+| name                 | string     | null: false |
 
 ### Association
+has_many :variable_costs
 
 
-## special_cost テーブル
+
+
+## special_costs テーブル
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
 | special_category_id   | integer    | null: false |
@@ -52,5 +87,13 @@ http://18.180.112.172/<br>
 | year                  | date       | null: false |
 
 ### Association
+belongs_to :specate
 
+## specates テーブル
 
+| Column               | Type       |Options      |
+| -------------------- | ---------- | ----------- |
+| name                 | string     | null: false |
+
+### Association
+has_many :special_costs
