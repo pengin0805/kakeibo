@@ -54,6 +54,9 @@ class FixedsController < ApplicationController
     end
   end
 
+  def search
+  end
+
   private
 
   def fixed_cost_params
