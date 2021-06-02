@@ -1,1 +1,23 @@
-dddd
+<div class="header">
+  <%= link_to "ホーム" ,root_path %>
+  <%= link_to "特別費" ,specials_path %>
+  <%= link_to "検索" ,search_fixeds_path %>
+</div>
+  <%= form_with url:search_fixeds_path, method: :get, local: true do |f| %>
+    <%= f.date_select( :sample, discard_day: true) %>
+    <%= f.submit "書き込み" ,class:"btn" %>
+  <% end %>
+
+  <h2>＜今月の合計＞</h2>
+  <table border="1" width="20%" cellpadding="3" class="week_sum">
+  <% if @search_day%>
+    <tr><th><%= @search_day.month %>月</th></tr>
+  <% end %>
+    <tr><td>¥<%= @month_sum %></td></tr>
+  </table>
+  <h2>＜各週の合計＞</h2>
+  <table border="1" cellpadding="3" class="week_sum">
+    <tr><th width="10%">第1週</th><th width="10%">第2週</th><th width="10%">第3週</th><th width="10%">第4週</th><th width="10%">第5週</th><th width="10%">第6週</th></tr>
+    <tr><td>¥<%= @week1_sum %></td><td>¥<%= @week2_sum %></td><td>¥<%= @week3_sum %></td><td>¥<%= @week4_sum %></td><td>¥<%= @week5_sum %></td><td>¥<%= @week6_sum %></td></tr>
+  </table>
+  <hr>
