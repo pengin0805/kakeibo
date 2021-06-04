@@ -54,6 +54,21 @@ class FixedsController < ApplicationController
     end
   end
 
+  def search
+    if params["sample(1i)"] && params["sample(2i)"] && params["sample(3i)"]
+    
+    @search_day = Date.new(params["sample(1i)"].to_i, params["sample(2i)"].to_i, params["sample(3i)"].to_i)
+    beginning_of_week = @search_day.beginning_of_week(:monday)
+    @week1_sum = VariableCost.where(start_time:beginning_of_week...beginning_of_week+7).sum(:price)
+    @week2_sum = VariableCost.where(start_time:beginning_of_week+7...beginning_of_week+14).sum(:price)
+    @week3_sum = VariableCost.where(start_time:beginning_of_week+14...beginning_of_week+21).sum(:price)
+    @week4_sum = VariableCost.where(start_time:beginning_of_week+21...beginning_of_week+28).sum(:price)
+    @week5_sum = VariableCost.where(start_time:beginning_of_week+28...beginning_of_week+35).sum(:price)
+    @week6_sum = VariableCost.where(start_time:beginning_of_week+35...beginning_of_week+42).sum(:price)
+    @month_sum = VariableCost.where(start_time:@search_day...@search_day.next_month.beginning_of_month).sum(:price)
+    end
+  end
+
   private
 
   def fixed_cost_params
