@@ -1,7 +1,7 @@
 <div class="header">
-  <%= link_to "ホーム" ,root_path %>
-  <%= link_to "特別費" ,specials_path %>
-  <%= link_to "検索" ,search_fixeds_path %>
+  <%= link_to "ホーム" ,root_path, class: "header_list" %>
+  <%= link_to "特別費" ,specials_path, class: "header_list" %>
+  <%= link_to "検索" ,search_fixeds_path, class: "header_list" %>
 </div>
 <div class="main">
   <h1>＜<%= Date.today.month%>月＞</h1>
@@ -19,8 +19,8 @@
   <% end %>
   <h2>＜今月の合計＞</h2>
   <table border="1" width="20%" cellpadding="3" class="week_sum">
-    <tr><th><%= Date.today.month-1%>月</th><th><%= Date.today.month%>月</th></tr>
-    <tr><td>¥<%= @last_month_sum %></td><td>¥<%= @month_sum %></td></tr>
+   <th><%= Date.today.month%>月</th></tr>
+    <td>¥<%= @month_sum %></td></tr>
   </table>
   <h2>＜各週の合計＞</h2>
   <table border="1" cellpadding="3" class="week_sum">
@@ -74,17 +74,17 @@
       <% end %>
     </table>
     <table cellpadding="4" width="50px" >
-      <tr><th>削除</th></tr>
+      <tr><th class="delete">削除</th></tr>
       <% variable_costs.each do |variable| %>
-      <tr><td style="border:none"><%= link_to "削除",variable_path(variable.id), method: :delete %></td></tr>
+      <tr><td style="border:none" class="delete"><%= link_to "削除",variable_path(variable.id), method: :delete, class: "delete" %></td></tr>
       <% end %>
     </table>
   </div>
   <% end %>
   </div>
   <h3>・カテゴリー別</h3>
-  <%= pie_chart @variable_ratio, donut: true, suffix: "%" %>
-  <%= column_chart  @variable_costs.joins(:varicate).group("varicates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
+  <%= pie_chart @variable_ratio, donut: true, suffix: "%",colors: [ "#FFB5A7","#FCD5CE","#F8EDEB","#F9DCC4","#FEC89A","#96939F","#7AA9CD","#93C2F1","#D1EAAE","#6DB8C5"], legend: "left" %>
+  <%= column_chart  @variable_costs.joins(:varicate).group("varicates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円", colors:["#6DB8C5"] %>
 
   <hr>
   <h2>＜固定費＞</h2>
@@ -133,20 +133,20 @@
       <% end %>
     </table>
     <table cellpadding="4" width="50px">
-      <tr><th>削除 </th></tr>
+      <tr><th class="delete">削除 </th></tr>
       <% fixed_costs.each do |fixed| %>
-      <tr><td style="border:none"><%= link_to "削除",fixed_path(fixed.id), method: :delete %></td></tr>
+      <tr><td style="border:none"><%= link_to "削除",fixed_path(fixed.id), method: :delete, class: "delete"  %></td></tr>
       <% end %>
     </table>
   </div>
   <% end %>
   </div>
   <h3>・カテゴリー別</h3>
-  <%= pie_chart @fixed_ratio, donut: true, suffix: "%",colors: [ "#769fcd","#b9d7ea","#d6e6f2","#f7fbfc"], legend: "left"%>
-  <%= column_chart  @fixed_costs.joins(:fixecate).group("fixecates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
+  <%= pie_chart @fixed_ratio, donut: true, suffix: "%",colors: [ "#FFB5A7","#FCD5CE","#F8EDEB","#F9DCC4","#FEC89A","#96939F","#7AA9CD","#93C2F1","#D1EAAE","#6DB8C5"], legend: "left"%>
+  <%= column_chart  @fixed_costs.joins(:fixecate).group("fixecates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円", colors:["#6DB8C5"] %>
   <h3>・内訳</h3>
-  <%= pie_chart @fixed_name_ratio, donut: true, suffix: "%" %>
-  <%= column_chart  @fixed_costs.joins(:fixecate_name).group("fixecate_names.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
+  <%= pie_chart @fixed_name_ratio, donut: true, suffix: "%",colors: [ "#FFB5A7","#FCD5CE","#F8EDEB","#F9DCC4","#FEC89A","#96939F","#7AA9CD","#93C2F1","#D1EAAE","#6DB8C5"], legend: "left" %>
+  <%= column_chart  @fixed_costs.joins(:fixecate_name).group("fixecate_names.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円", colors:["#6DB8C5"] %>
 
 </div>
 

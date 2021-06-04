@@ -1,6 +1,7 @@
 <div class="header">
-  <%= link_to "ホーム" ,root_path %>
-  <%= link_to "特別費" ,specials_path %>
+  <%= link_to "ホーム" ,root_path, class: "header_list" %>
+  <%= link_to "特別費" ,specials_path, class: "header_list" %>
+  <%= link_to "検索" ,search_fixeds_path, class: "header_list" %>
 </div>
 <div class="main">
   <h2>特別費</h2>
@@ -49,9 +50,9 @@
       <% end %>
     </table>
     <table cellpadding="4" width="50px">
-      <tr><th>削除</th></tr>
+      <tr><th class="delete">削除</th></tr>
       <% special_costs.each do |special| %>
-      <tr><td style="border:none"><%= link_to "削除",special_path(special.id), method: :delete %></td></tr>
+      <tr><td style="border:none"><%= link_to "削除",special_path(special.id), method: :delete, class: "delete"  %></td></tr>
       <% end %>
     </table>
   </div>
@@ -61,6 +62,6 @@
   <%# @ratio.each do |k,v| %>
     <%# @ratio = (v * 100)/1000 %>
   <%# end %>
-  <%= pie_chart @ratio, donut: true, suffix: "%" %>
-  <%= column_chart  @special_costs.joins(:specate).group("specates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円" %>
+  <%= pie_chart @ratio, donut: true, suffix: "%",colors: [ "#FFB5A7","#FCD5CE","#F8EDEB","#F9DCC4","#FEC89A","#96939F","#7AA9CD","#93C2F1","#D1EAAE","#6DB8C5"], legend: "left" %>
+  <%= column_chart  @special_costs.joins(:specate).group("specates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h, suffix: "円", colors:["#6DB8C5"]%>
 </div>

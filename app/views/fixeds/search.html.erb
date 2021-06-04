@@ -1,7 +1,7 @@
 <div class="header">
-  <%= link_to "ホーム" ,root_path %>
-  <%= link_to "特別費" ,specials_path %>
-  <%= link_to "検索" ,search_fixeds_path %>
+  <%= link_to "ホーム" ,root_path, class: "header_list" %>
+  <%= link_to "特別費" ,specials_path, class: "header_list" %>
+  <%= link_to "検索" ,search_fixeds_path, class: "header_list" %>
 </div>
   <%= form_with url:search_fixeds_path, method: :get, local: true do |f| %>
     <%= f.date_select( :sample, discard_day: true) %>

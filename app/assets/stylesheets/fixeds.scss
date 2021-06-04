@@ -1,10 +1,24 @@
 
 .header {
+  margin-top: 20px;
   height: 80px;
-  background-color: darkgrey;
+  background-color: #f8edeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header_list {
+  font-size: 25px;
+  display: block;
+  margin: 0 20px;
+  background-color: #ffb5a7;
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
 }
 .main {
-  padding: 50px;
+  padding: 10px 50px;
 }
 .form {
   display: flex;
@@ -36,4 +50,8 @@
 }
 h3 {
   text-align: center;
+}
+.delete {
+  color: gray;
+  text-decoration: none;
 }
