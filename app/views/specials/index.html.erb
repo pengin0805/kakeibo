@@ -44,7 +44,7 @@
   <% @special_costs.each_slice(10) do |special_costs| %>
   <div class="lists">
     <table border="1" width="100%" cellpadding="3">
-      <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
+      <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額 </th></tr>
       <% special_costs.each do |special| %>
       <tr><td><%= special.date.strftime("%-m月 %d日") %> </td><td><%= special.specate.name %></td><td><%= special.special_name %></td><td><%= special.price %></td></tr>
       <% end %>
