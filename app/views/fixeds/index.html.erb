@@ -18,7 +18,7 @@
   <% end %>
   <% end %>
   <h2>＜今月の合計＞</h2>
-  <table border="1" width="20%" cellpadding="3" class="week_sum">
+  <table border="1" width="20%" cellpadding="3" class="month_sum">
    <th><%= Date.today.month%>月</th></tr>
     <td>¥<%= @month_sum %></td></tr>
   </table>
@@ -65,7 +65,7 @@
     </div>
   <% end %>
   <div class="container">
-  <% @variable_costs.each_slice(3) do |variable_costs| %>
+  <% @variable_costs.each_slice(25) do |variable_costs| %>
   <div class="lists">
     <table border="1" width="100%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>

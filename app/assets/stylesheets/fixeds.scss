@@ -19,6 +19,7 @@
 }
 .main {
   padding: 10px 50px;
+  font-size: larger;
 }
 .form {
   display: flex;
@@ -26,13 +27,16 @@
 }
 .month {
   display: flex;
-  height: 35px;
+  height: 50px;
 }
 .form_child {
   margin: 0 10px;
 }
 .btn {
-  height: 60px;
+  height: 70px;
+  background-color: #ffb5a7;
+  color: white;
+  border-radius: 10px;
 }
 .container {
   display: flex;
@@ -43,10 +47,18 @@
   margin-bottom: 30px;
 }
 .text {
-  height: 30px;
+  height: 50px;
+  width: 150px;
 }
+.month_sum {
+  margin-bottom: 30px;
+  height: 120px;
+}
+
 .week_sum {
   margin-bottom: 30px;
+  height: 120px;
+  width: 100%;
 }
 h3 {
   text-align: center;
@@ -54,4 +66,9 @@ h3 {
 .delete {
   color: gray;
   text-decoration: none;
+  font-size: 15px;
+}
+
+td {
+  height: 40px;
 }
