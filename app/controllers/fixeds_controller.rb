@@ -73,6 +73,18 @@ class FixedsController < ApplicationController
         ratio = (v * 100).to_f / @search_costs.sum(:price)
         @search_ratio[k] = ratio.round(1)
       end
+      @search_fixed_costs = FixedCost.where('extract(year from month) = ? AND extract(month from month) = ?', @search_day.year, @search_day.month)
+      @search_fixed_ratio = @search_fixed_costs.joins(:fixecate).group("fixecates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
+      @search_fixed_ratio.each do |k,v| 
+        ratio = (v * 100).to_f / @search_fixed_costs.sum(:price)
+        @search_fixed_ratio[k] = ratio.round(1)
+      end
+      @search_fixed_name_ratio = @search_fixed_costs.joins(:fixecate_name).group("fixecate_names.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
+      @search_fixed_name_ratio.each do |k,v| 
+        ratio = (v * 100).to_f / @search_fixed_costs.sum(:price)
+        @search_fixed_name_ratio[k] = ratio.round(1)
+      end
+  
     end
   end
 
