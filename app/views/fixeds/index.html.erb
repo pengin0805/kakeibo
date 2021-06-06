@@ -126,7 +126,7 @@
   <div class="container">
   <% @fixed_costs.each_slice(10) do |fixed_costs| %>
   <div class="lists">
-    <table border="1" width="350px" cellpadding="3">
+    <table border="1" width="100%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% fixed_costs.each do |fixed| %>
       <tr><td><%= fixed.month.strftime("%-m月 %d日") %> </td><td><%= fixed.fixecate.name %></td><td><%= fixed.fixecate_name.name %></td><td><%= fixed.price %></td></tr>
