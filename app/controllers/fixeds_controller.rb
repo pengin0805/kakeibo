@@ -14,8 +14,10 @@ class FixedsController < ApplicationController
     @week4_sum = VariableCost.where(start_time:beginning_of_week+21...beginning_of_week+28).sum(:price)
     @week5_sum = VariableCost.where(start_time:beginning_of_week+28...beginning_of_week+35).sum(:price)
     @week6_sum = VariableCost.where(start_time:beginning_of_week+35...beginning_of_week+42).sum(:price)
-    @month_sum = VariableCost.where(start_time:today.beginning_of_month...today.next_month.beginning_of_month).sum(:price)
-    @last_month_sum = VariableCost.where(start_time:today.last_month.beginning_of_month...today.beginning_of_month).sum(:price)
+    @month_sum_variable = VariableCost.where(start_time:today.beginning_of_month...today.next_month.beginning_of_month).sum(:price)
+    @month_sum_fixed = FixedCost.where(month:today.beginning_of_month...today.next_month.beginning_of_month).sum(:price)
+    @month_sum_special = SpecialCost.where(date:today.beginning_of_month...today.next_month.beginning_of_month).sum(:price)
+    # @last_month_sum = VariableCost.where(start_time:today.last_month.beginning_of_month...today.beginning_of_month).sum(:price)
     @variable_ratio = @variable_costs.joins(:varicate).group("varicates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
     @variable_ratio.each do |k,v| 
       ratio = (v * 100).to_f / @variable_costs.sum(:price)
