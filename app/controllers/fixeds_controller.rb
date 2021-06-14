@@ -67,8 +67,11 @@ class FixedsController < ApplicationController
       @week4_sum = VariableCost.where(start_time:beginning_of_week+21...beginning_of_week+28).sum(:price)
       @week5_sum = VariableCost.where(start_time:beginning_of_week+28...beginning_of_week+35).sum(:price)
       @week6_sum = VariableCost.where(start_time:beginning_of_week+35...beginning_of_week+42).sum(:price)
-      @month_sum = VariableCost.where(start_time:@search_day...@search_day.next_month.beginning_of_month).sum(:price)
-
+      # @month_sum = VariableCost.where(start_time:@search_day...@search_day.next_month.beginning_of_month).sum(:price)
+      @month_sum_variable = VariableCost.where(start_time:@search_day.beginning_of_month...@search_day.next_month.beginning_of_month).sum(:price)
+      @month_sum_fixed = FixedCost.where(month:@search_day.beginning_of_month...@search_day.next_month.beginning_of_month).sum(:price)
+      @month_sum_special = SpecialCost.where(date:@search_day.beginning_of_month...@search_day.next_month.beginning_of_month).sum(:price)
+        
       @search_costs = VariableCost.where('extract(year from start_time) = ? AND extract(month from start_time) = ?', @search_day.year, @search_day.month).order(start_time: "ASC")
       @search_ratio = @search_costs.joins(:varicate).group("varicates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
       @search_ratio.each do |k,v| 
