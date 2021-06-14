@@ -58,6 +58,7 @@ gem 'simple_calendar', '~> 2.0'
 gem "chartkick"
 gem 'whenever', require: false
 
+
 group :production do
   gem 'unicorn', '5.4.1'
 end
