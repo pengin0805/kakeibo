@@ -14,7 +14,7 @@
 set :environment, :production
 set :output, "log/cron.log"
 
-every 1.minute do
+every 1.month, at: 'start of the month at 0am' do
   rake "fixed_update:monthly"
 end
 
