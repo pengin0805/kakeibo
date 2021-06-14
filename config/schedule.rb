@@ -5,16 +5,18 @@
 
 # require File.expand_path(File.dirname(__FILE__) + "/environment")
 
+#whenever(開発環境)
 # set :environment, Rails.env.to_sym
-set :environment, :production
 # set :output, "#{Rails.root}/log/cron.log"
-set :output, "log/cron.log"
 # set :job_template, "/bin/zsh -l -c ':job'"
 # job_type :rake, "export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$(rbenv init -)\"; cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
+#whenever(本番環境)
+# set :environment, :production
+# set :output, "log/cron.log"
 
-every 1.minute do
-  rake "fixed_update:monthly"
-end
+# every 1.minute do
+#   rake "fixed_update:monthly"
+# end
 
 
 
