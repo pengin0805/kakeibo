@@ -59,6 +59,42 @@
   <% end %>
   </div>
 <h2>年間予定</h2>
+  <%= form_with model: @annual, url:annuals_path, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+
+    <div class="form">
+      <div class="form_child">
+        <div class="fixed_category_id">
+          カテゴリー
+        </div>
+        <%= f.collection_select(:specate_id,Specate.all, :id, :name, {},{class:"text"}) %>
+      </div>
+      <div class="form_child">
+        <div class="fixed_id">
+          項目
+        </div>
+        <%= f.text_field :special_name, class:"text" %>
+      </div>
+      <div class="form_child">
+        <div class="price">
+          金額
+        </div>
+        <%= f.text_field :price, class:"text" %>円
+      </div>
+      <div class="form_child">
+        <div class="price">
+          日付
+        </div>
+        <div class="month">
+          <%= f.date_select :date, discard_day: true %>
+        </div>
+      </div>
+      <div class="form_child">
+          <%= f.submit "登録" ,class:"btn" %>
+      </div>
+    </div>
+  <% end %>
+
 <div class="container">
 <table border="1" cellpadding="6" cellspacing="0" width="50%">
   <tr>
@@ -69,12 +105,12 @@
   </tr> 
   <%# <% 1.times do |count|%>  
   <tr>
-    <%if @special_costs1.length == 0%>
-    <td rowspan="<%=@special_costs1.length+1%>">1月</td>
+    <%if @annual1.length == 0%>
+    <td rowspan="<%=@annual1.length+1%>">1月</td>
     <%else%>
-    <td rowspan="<%=@special_costs1.length%>">1月</td>
+    <td rowspan="<%=@annual1.length%>">1月</td>
     <%end%>
-    <%  @special_costs1.each do |cost| %>
+    <%  @annual1.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year %> 
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -84,12 +120,12 @@
     <% end %>
 
   <tr>
-    <%if @special_costs2.length == 0%>
-    <td rowspan="<%=@special_costs2.length+1%>">2月</td>
+    <%if @annual2.length == 0%>
+    <td rowspan="<%=@annual2.length+1%>">2月</td>
     <%else%>
-    <td rowspan="<%=@special_costs2.length%>">2月</td>
+    <td rowspan="<%=@annual2.length%>">2月</td>
     <%end%>
-    <%  @special_costs2.each do |cost| %>
+    <%  @annual2.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -98,12 +134,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs3.length == 0%>
-    <td rowspan="<%=@special_costs3.length+1%>">3月</td>
+    <%if @annual3.length == 0%>
+    <td rowspan="<%=@annual3.length+1%>">3月</td>
     <%else%>
-    <td rowspan="<%=@special_costs3.length%>">3月</td>
+    <td rowspan="<%=@annual3.length%>">3月</td>
     <%end%>
-    <%  @special_costs3.each do |cost| %>
+    <%  @annual3.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -112,12 +148,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs4.length == 0%>
-    <td rowspan="<%=@special_costs4.length+1%>">4月</td>
+    <%if @annual4.length == 0%>
+    <td rowspan="<%=@annual4.length+1%>">4月</td>
     <%else%>
-    <td rowspan="<%=@special_costs4.length%>">4月</td>
+    <td rowspan="<%=@annual4.length%>">4月</td>
     <%end%>
-    <%  @special_costs4.each do |cost| %>
+    <%  @annual4.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -126,12 +162,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs5.length == 0%>
-    <td rowspan="<%=@special_costs5.length+1%>">5月</td>
+    <%if @annual5.length == 0%>
+    <td rowspan="<%=@annual5.length+1%>">5月</td>
     <%else%>
-    <td rowspan="<%=@special_costs5.length%>">5月</td>
+    <td rowspan="<%=@annual5.length%>">5月</td>
     <%end%>
-    <%  @special_costs5.each do |cost| %>
+    <%  @annual5.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -140,12 +176,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs6.length == 0%>
-    <td rowspan="<%=@special_costs6.length+1%>">6月</td>
+    <%if @annual6.length == 0%>
+    <td rowspan="<%=@annual6.length+1%>">6月</td>
     <%else%>
-    <td rowspan="<%=@special_costs6.length%>">6月</td>
+    <td rowspan="<%=@annual6.length%>">6月</td>
     <%end%>
-    <%  @special_costs6.each do |cost| %>
+    <%  @annual6.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -161,12 +197,12 @@
     <th>予算</th>
     <th>✅</th>
   </tr>   <tr>
-    <%if @special_costs7.length == 0%>
-    <td rowspan="<%=@special_costs7.length+1%>">7月</td>
+    <%if @annual7.length == 0%>
+    <td rowspan="<%=@annual7.length+1%>">7月</td>
     <%else%>
-    <td rowspan="<%=@special_costs7.length%>">7月</td>
+    <td rowspan="<%=@annual7.length%>">7月</td>
     <%end%>
-    <%  @special_costs7.each do |cost| %>
+    <%  @annual7.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -175,12 +211,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs8.length == 0%>
-    <td rowspan="<%=@special_costs8.length+1%>">8月</td>
+    <%if @annual8.length == 0%>
+    <td rowspan="<%=@annual8.length+1%>">8月</td>
     <%else%>
-    <td rowspan="<%=@special_costs8.length%>">8月</td>
+    <td rowspan="<%=@annual8.length%>">8月</td>
     <%end%>
-    <%  @special_costs8.each do |cost| %>
+    <%  @annual8.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -189,12 +225,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs9.length == 0%>
-    <td rowspan="<%=@special_costs9.length+1%>">9月</td>
+    <%if @annual9.length == 0%>
+    <td rowspan="<%=@annual9.length+1%>">9月</td>
     <%else%>
-    <td rowspan="<%=@special_costs9.length%>">9月</td>
+    <td rowspan="<%=@annual9.length%>">9月</td>
     <%end%>
-    <%  @special_costs9.each do |cost| %>
+    <%  @annual9.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -203,12 +239,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs10.length == 0%>
-    <td rowspan="<%=@special_costs10.length+1%>">10月</td>
+    <%if @annual10.length == 0%>
+    <td rowspan="<%=@annual10.length+1%>">10月</td>
     <%else%>
-    <td rowspan="<%=@special_costs10.length%>">10月</td>
+    <td rowspan="<%=@annual10.length%>">10月</td>
     <%end%>
-    <%  @special_costs10.each do |cost| %>
+    <%  @annual10.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -217,12 +253,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs11.length == 0%>
-    <td rowspan="<%=@special_costs11.length+1%>">11月</td>
+    <%if @annual11.length == 0%>
+    <td rowspan="<%=@annual11.length+1%>">11月</td>
     <%else%>
-    <td rowspan="<%=@special_costs11.length%>">11月</td>
+    <td rowspan="<%=@annual11.length%>">11月</td>
     <%end%>
-    <%  @special_costs11.each do |cost| %>
+    <%  @annual11.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
@@ -231,12 +267,12 @@
   </tr>
     <% end %>
   <tr>
-    <%if @special_costs12.length == 0%>
-    <td rowspan="<%=@special_costs12.length+1%>">12月</td>
+    <%if @annual12.length == 0%>
+    <td rowspan="<%=@annual12.length+1%>">12月</td>
     <%else%>
-    <td rowspan="<%=@special_costs12.length%>">12月</td>
+    <td rowspan="<%=@annual12.length%>">12月</td>
     <%end%>
-    <%  @special_costs12.each do |cost| %>
+    <%  @annual12.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
