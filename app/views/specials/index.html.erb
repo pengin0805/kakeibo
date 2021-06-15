@@ -32,7 +32,7 @@
           日付
         </div>
         <div class="month">
-          <%= f.date_select :date, discard_day: true, discard_month: true %>
+          <%= f.date_select :date, discard_day: true %>
         </div>
       </div>
       <div class="form_child">
@@ -58,6 +58,198 @@
   </div>
   <% end %>
   </div>
+<h2>年間予定</h2>
+<div class="container">
+<table border="1" cellpadding="6" cellspacing="0" width="50%">
+  <tr>
+    <th>月</th>
+    <th>内容</th>
+    <th>予算</th>
+    <th>✅</th>
+  </tr> 
+  <%# <% 1.times do |count|%>  
+  <tr>
+    <%if @special_costs1.length == 0%>
+    <td rowspan="<%=@special_costs1.length+1%>">1月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs1.length%>">1月</td>
+    <%end%>
+    <%  @special_costs1.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year %> 
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+
+  <tr>
+    <%if @special_costs2.length == 0%>
+    <td rowspan="<%=@special_costs2.length+1%>">2月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs2.length%>">2月</td>
+    <%end%>
+    <%  @special_costs2.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs3.length == 0%>
+    <td rowspan="<%=@special_costs3.length+1%>">3月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs3.length%>">3月</td>
+    <%end%>
+    <%  @special_costs3.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs4.length == 0%>
+    <td rowspan="<%=@special_costs4.length+1%>">4月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs4.length%>">4月</td>
+    <%end%>
+    <%  @special_costs4.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs5.length == 0%>
+    <td rowspan="<%=@special_costs5.length+1%>">5月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs5.length%>">5月</td>
+    <%end%>
+    <%  @special_costs5.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs6.length == 0%>
+    <td rowspan="<%=@special_costs6.length+1%>">6月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs6.length%>">6月</td>
+    <%end%>
+    <%  @special_costs6.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+</table>
+<table border="1" cellpadding="6" cellspacing="0" width="50%">
+  <tr>
+    <th>月</th>
+    <th>内容</th>
+    <th>予算</th>
+    <th>✅</th>
+  </tr>   <tr>
+    <%if @special_costs7.length == 0%>
+    <td rowspan="<%=@special_costs7.length+1%>">7月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs7.length%>">7月</td>
+    <%end%>
+    <%  @special_costs7.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs8.length == 0%>
+    <td rowspan="<%=@special_costs8.length+1%>">8月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs8.length%>">8月</td>
+    <%end%>
+    <%  @special_costs8.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs9.length == 0%>
+    <td rowspan="<%=@special_costs9.length+1%>">9月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs9.length%>">9月</td>
+    <%end%>
+    <%  @special_costs9.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs10.length == 0%>
+    <td rowspan="<%=@special_costs10.length+1%>">10月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs10.length%>">10月</td>
+    <%end%>
+    <%  @special_costs10.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs11.length == 0%>
+    <td rowspan="<%=@special_costs11.length+1%>">11月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs11.length%>">11月</td>
+    <%end%>
+    <%  @special_costs11.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+  <tr>
+    <%if @special_costs12.length == 0%>
+    <td rowspan="<%=@special_costs12.length+1%>">12月</td>
+    <%else%>
+    <td rowspan="<%=@special_costs12.length%>">12月</td>
+    <%end%>
+    <%  @special_costs12.each do |cost| %>
+      <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
+        <td><%= cost.special_name%></td>
+        <td ><%= cost.price%></td>
+    <td ><input type="checkbox"></td>
+      <%# <% end %> 
+  </tr>
+    <% end %>
+
+  <%# <% end %>  
+</table>
+</div>
+
+
   <h3>・カテゴリー別</h3>
   <%# @ratio.each do |k,v| %>
     <%# @ratio = (v * 100)/1000 %>
