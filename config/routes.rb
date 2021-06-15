@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
   resources :variables, only: [:create, :destroy]
   resources :specials, only: [:index, :create, :destroy]
+  resources :annuals, only: [:create]
 end
