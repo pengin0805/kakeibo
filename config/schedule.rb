@@ -3,9 +3,9 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-# require File.expand_path(File.dirname(__FILE__) + "/environment")
 
 #whenever(開発環境)
+# require File.expand_path(File.dirname(__FILE__) + "/environment")
 # set :environment, Rails.env.to_sym
 # set :output, "#{Rails.root}/log/cron.log"
 # set :job_template, "/bin/zsh -l -c ':job'"
