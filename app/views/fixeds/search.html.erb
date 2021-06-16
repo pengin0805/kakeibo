@@ -6,8 +6,14 @@
 <div class="main">
   <%= form_with url:search_fixeds_path, method: :get, local: true do |f| %>
   <div class="form">
-    <div class="month">
-      <%= f.date_select( :sample, discard_day: true) %>
+    <div class="month search">
+          <%= raw sprintf(
+            f.date_select( 
+              :start_time,
+              discard_day:true,
+              use_month_numbers:true,
+              date_separator: '%s'),
+            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
     </div>
     <div class="form_child">
       <%= f.submit "登録" ,class:"btn" %>

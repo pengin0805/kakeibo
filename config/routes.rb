@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
   resources :variables, only: [:create, :destroy]
   resources :specials, only: [:index, :create, :destroy]
+  get "specials/test" => 'specials#test'
   resources :annuals, only: [:create]
 end

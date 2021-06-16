@@ -32,7 +32,13 @@
           日付
         </div>
         <div class="month">
-          <%= f.date_select :date, discard_day: true %>
+          <%= raw sprintf(
+            f.date_select( 
+              :start_time,
+              discard_day:true,
+              use_month_numbers:true,
+              date_separator: '%s'),
+            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
         </div>
       </div>
       <div class="form_child">
@@ -86,7 +92,13 @@
           日付
         </div>
         <div class="month">
-          <%= f.date_select :date, discard_day: true %>
+          <%= raw sprintf(
+            f.date_select( 
+              :start_time,
+              discard_day:true,
+              use_month_numbers:true,
+              date_separator: '%s'),
+            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
         </div>
       </div>
       <div class="form_child">
@@ -95,7 +107,7 @@
     </div>
   <% end %>
 
-<div class="container">
+<div class="container annual">
 <table border="1" cellpadding="6" cellspacing="0" width="50%">
   <tr>
     <th>月</th>
@@ -114,7 +126,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year %> 
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -129,7 +141,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -143,7 +155,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -157,7 +169,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -171,7 +183,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk" class="big"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -185,7 +197,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -206,7 +218,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -220,7 +232,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -234,7 +246,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -248,7 +260,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -262,7 +274,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
@@ -276,7 +288,7 @@
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
         <td ><%= cost.price%></td>
-    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
     <% end %>
