@@ -1,14 +1,17 @@
 
 .header {
   margin-top: 20px;
-  height: 80px;
+  height: 100px;
   background-color: #f8edeb;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header_list {
-  font-size: 25px;
+  width: 100px;
+  text-align: center;
+  height: 70px;
+  font-size: 30px;
   display: block;
   margin: 0 20px;
   background-color: #ffb5a7;
@@ -16,6 +19,7 @@
   padding: 10px;
   text-decoration: none;
   color: white;
+  line-height:70px;
 }
 .main {
   padding: 10px 50px;
@@ -38,7 +42,7 @@
   background-color: #ffb5a7;
   color: white;
   border-radius: 10px;
-  font-size: larger;
+  font-size: 40px;
   margin-top: 30px;
 }
 .container {
