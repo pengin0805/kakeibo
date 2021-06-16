@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_121842) do
     t.string "variable_name", null: false
     t.integer "price", null: false
     t.date "start_time", null: false
+    t.string "card", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["varicate_id"], name: "index_variable_costs_on_varicate_id"

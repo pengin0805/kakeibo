@@ -44,6 +44,10 @@
           項目
         </div>
         <%= f.text_field :variable_name, class:"text" %>
+        <%= f.radio_button :card, :False ,checked: true %>
+        <%= f.label :card, "現金" %>
+        <%= f.radio_button :card, :True %>
+        <%= f.label :card, "カード" %>
       </div>
       <div class="form_child">
         <div class="price">
@@ -69,13 +73,18 @@
       </div>
     </div>
   <% end %>
+  <p><span class="card" style= "background-color: #faedcd;">カード払い</span></p>
   <div class="container">
   <% @variable_costs.each_slice(25) do |variable_costs| %>
   <div class="lists">
     <table border="1" width="100%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% variable_costs.each do |variable| %>
-      <tr><td><%= variable.start_time.strftime("%-m月 %d日") %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
+        <%if variable.card == "True"%>
+          <tr><td><%= variable.start_time.strftime("%-m月 %d日") %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td style = "background-color: #faedcd;"><%= variable.price %></td></tr>
+        <% else %>
+          <tr><td><%= variable.start_time.strftime("%-m月 %d日") %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
+        <% end %>
       <% end %>
     </table>
     <table cellpadding="4" width="50px" >
