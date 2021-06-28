@@ -20,11 +20,11 @@
     </div>
   </div>
   <% end %>
-
+  <% if params["sample(1i)"] && params["sample(2i)"] && params["sample(3i)"] %>
   <h2>＜<%= Date.today.month%>月の合計＞</h2>
   <table border="1" cellpadding="3" class="month_sum">
     <tr ><th width="20%" bgcolor="#F9D2B4">変動費</th><th width="20%" bgcolor="#F5F5E1">固定費</th><th width="20%" bgcolor="#e3f0fb">特別費</th></tr>
-    <tr><td>¥<%= @month_sum_variable %></td><td>¥<%= @month_sum_fixed %></td><td>¥<%= @month_sum_special %></td></tr>
+    <tr><td>¥<%= @month_sum_variable.to_s(:delimited) %></td><td>¥<%= @month_sum_fixed %></td><td>¥<%= @month_sum_special %></td></tr>
   </table>
   <h2>＜各週の合計＞</h2>
   <table border="1" cellpadding="3" class="week_sum">
@@ -34,7 +34,6 @@
   <hr>
   <h2>＜変動費＞</h2>
   <div class="container">
-  <% if params["sample(1i)"] && params["sample(2i)"] && params["sample(3i)"] %>
     <% @search_costs.each_slice(10) do |search_costs| %>
     <div class="lists">
       <table border="1" width="100%" cellpadding="3">
