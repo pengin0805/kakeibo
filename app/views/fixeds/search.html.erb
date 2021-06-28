@@ -24,22 +24,22 @@
   <h2>＜<%= Date.today.month%>月の合計＞</h2>
   <table border="1" cellpadding="3" class="month_sum">
     <tr ><th width="20%" bgcolor="#F9D2B4">変動費</th><th width="20%" bgcolor="#F5F5E1">固定費</th><th width="20%" bgcolor="#e3f0fb">特別費</th></tr>
-    <tr><td>¥<%= @month_sum_variable.to_s(:delimited) %></td><td>¥<%= @month_sum_fixed %></td><td>¥<%= @month_sum_special %></td></tr>
+    <tr><td>¥<%= @month_sum_variable.to_s(:delimited) %></td><td>¥<%= @month_sum_fixed.to_s(:delimited) %></td><td>¥<%= @month_sum_special.to_s(:delimited) %></td></tr>
   </table>
   <h2>＜各週の合計＞</h2>
   <table border="1" cellpadding="3" class="week_sum">
     <tr><th width="10%">第1週</th><th width="10%">第2週</th><th width="10%">第3週</th><th width="10%">第4週</th><th width="10%">第5週</th><th width="10%">第6週</th></tr>
-    <tr><td>¥<%= @week1_sum %></td><td>¥<%= @week2_sum %></td><td>¥<%= @week3_sum %></td><td>¥<%= @week4_sum %></td><td>¥<%= @week5_sum %></td><td>¥<%= @week6_sum %></td></tr>
+    <tr><td>¥<%= @week1_sum.to_s(:delimited) %></td><td>¥<%= @week2_sum.to_s(:delimited) %></td><td>¥<%= @week3_sum.to_s(:delimited) %></td><td>¥<%= @week4_sum %></td><td>¥<%= @week5_sum.to_s(:delimited) %></td><td>¥<%= @week6_sum.to_s(:delimited) %></td></tr>
   </table>
   <hr>
   <h2>＜変動費＞</h2>
   <div class="container">
-    <% @search_costs.each_slice(10) do |search_costs| %>
+    <% @search_costs.each_slice(25) do |search_costs| %>
     <div class="lists">
       <table border="1" width="100%" cellpadding="3">
         <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
         <% search_costs.each do |search| %>
-        <tr><td><%= search.start_time.strftime("%-m月 %d日") %> </td><td><%= search.varicate.name %></td><td><%= search.variable_name %></td><td><%= search.price %></td></tr>
+        <tr><td><%= search.start_time.strftime("%-m月 %d日") %> </td><td><%= search.varicate.name %></td><td><%= search.variable_name %></td><td><%= search.price.to_s(:delimited) %></td></tr>
         <% end %>
       </table>
       <table cellpadding="4" width="50px" >
@@ -61,7 +61,7 @@
       <table border="1" width="100%" cellpadding="3">
         <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
         <% search_fixed_costs.each do |search_fixed| %>
-        <tr><td><%= search_fixed.month.strftime("%-m月 %d日") %> </td><td><%= search_fixed.fixecate.name %></td><td><%= search_fixed.fixecate_name.name %></td><td><%= search_fixed.price %></td></tr>
+        <tr><td><%= search_fixed.month.strftime("%-m月 %d日") %> </td><td><%= search_fixed.fixecate.name %></td><td><%= search_fixed.fixecate_name.name %></td><td><%= search_fixed.price.to_s(:delimited) %></td></tr>
         <% end %>
       </table>
       <table cellpadding="4" width="50px">
