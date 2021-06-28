@@ -20,11 +20,11 @@
   <h2>＜<%= Date.today.month%>月の合計＞</h2>
   <div class="status">
     <table border="2" cellpadding="3" class="month_sum" width="40%" >
-      <tr ><th width="20%" class="aaa" bgcolor="#e3f0fb">変動費</th><th width="20%">固定費</th><th width="20%">特別費</th></tr>
+      <tr ><th width="20%" bgcolor="#F9D2B4">変動費</th><th width="20%" bgcolor="#F5F5E1">固定費</th><th width="20%" bgcolor="#e3f0fb">特別費</th></tr>
       <tr><td>¥<%= @month_sum_variable %></td><td>¥<%= @month_sum_fixed %></td><td>¥<%= @month_sum_special %></td></tr>
     </table>
     <table border="2" cellpadding="3" class="month_sum" width="20%">
-      <tr><th ><%= Date.today.month%>月の残り</th></tr>
+      <tr bgcolor="#F9D2B4"><th ><%= Date.today.month%>月の残り</th></tr>
       <tr><td>¥<%= @month_status %></td></tr>
     </table>
   </div>
