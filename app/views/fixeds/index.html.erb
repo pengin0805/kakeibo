@@ -18,12 +18,18 @@
     <% end %>
   <% end %>
   <h2>＜<%= Date.today.month%>月の合計＞</h2>
-  <table border="1" cellpadding="3" class="month_sum">
-    <tr><th width="20%" >変動費</th><th width="20%">固定費</th><th width="20%">特別費</th></tr>
-    <tr><td>¥<%= @month_sum_variable %></td><td>¥<%= @month_sum_fixed %></td><td>¥<%= @month_sum_special %></td></tr>
-  </table>
+  <div class="status">
+    <table border="2" cellpadding="3" class="month_sum" width="40%" >
+      <tr ><th width="20%" class="aaa" bgcolor="#e3f0fb">変動費</th><th width="20%">固定費</th><th width="20%">特別費</th></tr>
+      <tr><td>¥<%= @month_sum_variable %></td><td>¥<%= @month_sum_fixed %></td><td>¥<%= @month_sum_special %></td></tr>
+    </table>
+    <table border="2" cellpadding="3" class="month_sum" width="20%">
+      <tr><th ><%= Date.today.month%>月の残り</th></tr>
+      <tr><td>¥<%= @month_status %></td></tr>
+    </table>
+  </div>
   <h2>＜各週の合計＞</h2>
-  <table border="1" cellpadding="3" class="week_sum">
+  <table border="2" cellpadding="3" class="week_sum">
     <tr><th width="10%">第1週</th><th width="10%">第2週</th><th width="10%">第3週</th><th width="10%">第4週</th><th width="10%">第5週</th><th width="10%">第6週</th></tr>
     <tr><td>¥<%= @week1_sum %></td><td>¥<%= @week2_sum %></td><td>¥<%= @week3_sum %></td><td>¥<%= @week4_sum %></td><td>¥<%= @week5_sum %></td><td>¥<%= @week6_sum %></td></tr>
   </table>
@@ -38,15 +44,16 @@
           カテゴリー
         </div>
         <%= f.collection_select(:varicate_id,Varicate.all, :id, :name, {},{class:"text"}) %>
+        <%= f.collection_select(:varicate_id,Varicate.all, :id, :name, {},{class:"text"}) %>
       </div>
       <div class="form_child">
         <div class="fixed_id">
           項目
         </div>
         <%= f.text_field :variable_name, class:"text" %>
-        <%= f.radio_button :card, :False ,checked: true %>
+        <%= f.radio_button :card, :False ,checked: true,class: "blue"%>
         <%= f.label :card, "現金" %>
-        <%= f.radio_button :card, :True %>
+        <%= f.radio_button :card, :True,class: "blue" %>
         <%= f.label :card, "カード" %>
       </div>
       <div class="form_child">

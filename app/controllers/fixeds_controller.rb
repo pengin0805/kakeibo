@@ -17,6 +17,7 @@ class FixedsController < ApplicationController
     @month_sum_variable = VariableCost.where(start_time:today.beginning_of_month...today.next_month.beginning_of_month).sum(:price)
     @month_sum_fixed = FixedCost.where(month:today.beginning_of_month...today.next_month.beginning_of_month).sum(:price)
     @month_sum_special = SpecialCost.where(date:today.beginning_of_month...today.next_month.beginning_of_month).sum(:price)
+    @month_status = 50000 - @month_sum_variable
     # @last_month_sum = VariableCost.where(start_time:today.last_month.beginning_of_month...today.beginning_of_month).sum(:price)
     @variable_ratio = @variable_costs.joins(:varicate).group("varicates.name").sum(:price).sort_by { |_, v| v }.reverse.to_h
     @variable_ratio.each do |k,v| 
