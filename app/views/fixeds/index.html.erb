@@ -19,19 +19,19 @@
   <% end %>
   <h2>＜<%= Date.today.month%>月の合計＞</h2>
   <div class="status">
-    <table border="2" cellpadding="3" class="month_sum" width="40%" >
+    <table border="2" cellpadding="3" class="month_sum" width="60%" >
       <tr ><th width="20%" bgcolor="#F9D2B4">変動費</th><th width="20%" bgcolor="#F5F5E1">固定費</th><th width="20%" bgcolor="#e3f0fb">特別費</th></tr>
-      <tr><td>¥<%= @month_sum_variable %></td><td>¥<%= @month_sum_fixed %></td><td>¥<%= @month_sum_special %></td></tr>
+      <tr><td>¥<%= @month_sum_variable.to_s(:delimited) %></td><td>¥<%= @month_sum_fixed.to_s(:delimited) %></td><td>¥<%= @month_sum_special.to_s(:delimited) %></td></tr>
     </table>
-    <table border="2" cellpadding="3" class="month_sum" width="20%">
+    <table border="2" cellpadding="3" class="month_sum" width="30%">
       <tr bgcolor="#F9D2B4"><th ><%= Date.today.month%>月の残り</th></tr>
-      <tr><td>¥<%= @month_status %></td></tr>
+      <tr><td>¥<%= @month_status.to_s(:delimited) %></td></tr>
     </table>
   </div>
   <h2>＜各週の合計＞</h2>
   <table border="2" cellpadding="3" class="week_sum">
     <tr><th width="10%">第1週</th><th width="10%">第2週</th><th width="10%">第3週</th><th width="10%">第4週</th><th width="10%">第5週</th><th width="10%">第6週</th></tr>
-    <tr><td>¥<%= @week1_sum %></td><td>¥<%= @week2_sum %></td><td>¥<%= @week3_sum %></td><td>¥<%= @week4_sum %></td><td>¥<%= @week5_sum %></td><td>¥<%= @week6_sum %></td></tr>
+    <tr><td>¥<%= @week1_sum.to_s(:delimited) %></td><td>¥<%= @week2_sum.to_s(:delimited) %></td><td>¥<%= @week3_sum.to_s(:delimited) %></td><td>¥<%= @week4_sum.to_s(:delimited) %></td><td>¥<%= @week5_sum.to_s(:delimited) %></td><td>¥<%= @week6_sum.to_s(:delimited) %></td></tr>
   </table>
   <hr>
   <h2>＜変動費＞</h2>
@@ -88,9 +88,9 @@
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% variable_costs.each do |variable| %>
         <%if variable.card == "True"%>
-          <tr><td><%= variable.start_time.strftime("%-m月 %d日") %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td style = "background-color: #faedcd;"><%= variable.price %></td></tr>
+          <tr><td><%= variable.start_time.strftime("%-m月 %d日") %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td style = "background-color: #faedcd;"><%= variable.price.to_s(:delimited) %></td></tr>
         <% else %>
-          <tr><td><%= variable.start_time.strftime("%-m月 %d日") %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td><%= variable.price %></td></tr>
+          <tr><td><%= variable.start_time.strftime("%-m月 %d日") %> </td><td><%= variable.varicate.name %></td><td><%= variable.variable_name %></td><td><%= variable.price.to_s(:delimited) %></td></tr>
         <% end %>
       <% end %>
     </table>
@@ -156,7 +156,7 @@
     <table border="1" width="100%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額</th></tr>
       <% fixed_costs.each do |fixed| %>
-      <tr><td><%= fixed.month.strftime("%-m月 %d日") %> </td><td><%= fixed.fixecate.name %></td><td><%= fixed.fixecate_name.name %></td><td><%= fixed.price %></td></tr>
+      <tr><td><%= fixed.month.strftime("%-m月 %d日") %> </td><td><%= fixed.fixecate.name %></td><td><%= fixed.fixecate_name.name %></td><td><%= fixed.price.to_s(:delimited) %></td></tr>
       <% end %>
     </table>
     <table cellpadding="4" width="50px">

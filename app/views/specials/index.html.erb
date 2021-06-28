@@ -52,7 +52,7 @@
     <table border="1" width="100%" cellpadding="3">
       <tr><th>日付</th><th>カテゴリー</th><th>項目</th><th>金額 </th></tr>
       <% special_costs.each do |special| %>
-      <tr><td><%= special.date.strftime("%-m月 %d日") %> </td><td><%= special.specate.name %></td><td><%= special.special_name %></td><td><%= special.price %></td></tr>
+      <tr><td><%= special.date.strftime("%-m月 %d日") %> </td><td><%= special.specate.name %></td><td><%= special.special_name %></td><td><%= special.price.to_s(:delimited) %></td></tr>
       <% end %>
     </table>
     <table cellpadding="4" width="50px">
@@ -125,7 +125,7 @@
     <%  @annual1.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year %> 
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -140,7 +140,7 @@
     <%  @annual2.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -154,7 +154,7 @@
     <%  @annual3.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -168,7 +168,7 @@
     <%  @annual4.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -182,7 +182,7 @@
     <%  @annual5.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk" class="big"></td>
       <%# <% end %> 
   </tr>
@@ -196,7 +196,7 @@
     <%  @annual6.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -217,7 +217,7 @@
     <%  @annual7.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -231,7 +231,7 @@
     <%  @annual8.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -245,7 +245,7 @@
     <%  @annual9.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -259,7 +259,7 @@
     <%  @annual10.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -273,7 +273,7 @@
     <%  @annual11.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
@@ -287,7 +287,7 @@
     <%  @annual12.each do |cost| %>
       <%# <% if cost.date.month == 5 && cost.date.year == Date.today.year%>
         <td><%= cost.special_name%></td>
-        <td ><%= cost.price%></td>
+        <td ><%= cost.price.to_s(:delimited)%></td>
     <td ><input type="checkbox" class="chk"></td>
       <%# <% end %> 
   </tr>
