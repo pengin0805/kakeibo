@@ -14,5 +14,6 @@ namespace :fixed_update do
     FixedCost.create(fixecate_id: 8 ,fixecate_name_id: 13 ,price: 1480 ,month:  Date.new(today.year,today.month))
     FixedCost.create(fixecate_id: 8 ,fixecate_name_id: 14 ,price: 1490 ,month:  Date.new(today.year,today.month))
     FixedCost.create(fixecate_id: 6 ,fixecate_name_id: 15 ,price: 16500 ,month:  Date.new(today.year,today.month))
+    FixedCost.create(fixecate_id: 8 ,fixecate_name_id: 18 ,price: 900 ,month:  Date.new(today.year,today.month))
   end
 end
