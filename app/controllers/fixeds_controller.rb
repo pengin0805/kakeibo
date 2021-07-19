@@ -71,7 +71,6 @@ class FixedsController < ApplicationController
 
   def search
     if params["sample(1i)"] && params["sample(2i)"] && params["sample(3i)"]
-    
       @search_day = Date.new(params["sample(1i)"].to_i, params["sample(2i)"].to_i, params["sample(3i)"].to_i)
       beginning_of_week = @search_day.beginning_of_week(:monday)
       @week1_sum = VariableCost.where(start_time:beginning_of_week...beginning_of_week+7).sum(:price)

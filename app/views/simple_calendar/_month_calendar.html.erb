@@ -1,7 +1,8 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: '前月'), calendar.url_for_previous_view %>
-    <span class="calendar-title"><%= Date.today.strftime("%Y年 %-m月") %></span>
+    <span class="calendar-title"><%= start_date.strftime("%Y年 %-m月") %></span>
+    <%# <%= Date.today.strftime("%Y年 %-m月") %>
     <%= link_to t('simple_calendar.next', default: '次月'), calendar.url_for_next_view %>
   </div>
 
