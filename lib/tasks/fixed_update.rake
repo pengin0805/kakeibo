@@ -3,7 +3,7 @@ namespace :fixed_update do
 
   task monthly: :environment do
     today = Date.today
-    FixedCost.create(fixecate_id: 2 ,fixecate_name_id:6 ,price: 70000 ,month:  Date.new(today.year,today.month))
+    FixedCost.create(fixecate_id: 2 ,fixecate_name_id:6 ,price: 85000 ,month:  Date.new(today.year,today.month))
     FixedCost.create(fixecate_id: 2 ,fixecate_name_id: 7 ,price: 6000 ,month:  Date.new(today.year,today.month))
     FixedCost.create(fixecate_id: 5 ,fixecate_name_id: 8 ,price: 7000 ,month:  Date.new(today.year,today.month))
     FixedCost.create(fixecate_id: 7 ,fixecate_name_id: 9 ,price: 16000 ,month:  Date.new(today.year,today.month))
